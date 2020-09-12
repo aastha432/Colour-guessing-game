@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Game</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		body{
+			background: black;
+		}
+		.square{
+			width: 30%;
+			margin: 1.66%;
+			background: purple;
+			padding-bottom: 30%;
+			float: left;
+			transition: all 2.0s;
+			
+		}
+		#container{
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		#display{
+			font-size: 25px;
+			background-color: rgb(164, 166, 171);
+			border: 2px solid white;
+			padding: 5px 5px;
+			font-family: 'Poppins', sans-serif;
+		}
+		#guess{
+			font-family: 'Lobster', cursive;
+			color: white;
+			font-size: 30px;
+			animation: color-change 1.5s infinite;
+		}
+		h1{
+			color: white;
+			text-align: center;
+		}
+		h2{
+			color: white;
+			background: black;
+			text-align: center;
+		}
+		#strip{
+			background: white;
+			text-align: center;
+			height: 30px;
+			color: blue;
+		}
+		h3{
+			color: white;
+			font-weight: 60rem;
+			text-align: center;
+		}
+		header{
+			background:  url("https://images.unsplash.com/photo-1545599770-28d3851b7829?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+			background-position: center;
+			margin-bottom: 0em;
+			background-size: cover;
+			font-family: 'Abril Fatface', cursive;
+			
+		}
+		#rules{
+			color: white;
+			border: 2px solid pink;
+			
+			
+		}
+		h4 {
+		  animation: color-change 1s infinite;
+		}
+
+		@keyframes color-change {
+		  0% { color: red; }
+		  20% { color: green; }
+		  40% { color: purple; }
+		  60% { color: yellow; }
+		  80% { color: pink; }
+		  100% { color: blue; }
+		}
+
+
+	</style>
+</head>
+<body >
+
+	<header>
+		<h1>Color Guessing Game </h1>
+		<h3 style="font-size: 20px;">---Created by Aastha Sarkar</h3>
+	</header>
+
+	
+
+
+	<nav class="navbar navbar-light bg-light justify-content-around">
+	  <div>
+	  	<button id="reset" class="btn btn-dark">New Colors</button>
+	  </div>
+	  <div>
+		<button id="easy" class="btn btn-outline-warning">Easy</button>
+		<button id="medium" class="btn btn-outline-primary">Medium</button>
+		<button id="difficult" class="btn btn-outline-danger">Hard</button>
+  	  </div>  
+	</nav>
+
+	<div class="mt-3" style="text-align: center;">
+		<span id="display" class="rounded-pill"> ></span>
+		<p id="guess">Can you guess the above color?</p>
+	</div>
+		
+	<div class="container">
+	  <div class="row">
+	    <div class="col-xl">
+			<div id="container">
+				<div class="square rounded-circle"></div>
+				<div class="square rounded-circle"></div>
+				<div class="square rounded-circle"></div>
+				<div class="square rounded-circle"></div>
+				<div class="square rounded-circle"></div>
+				<div class="square rounded-circle"></div>
+				<div class="square rounded-circle"></div>
+				<div class="square rounded-circle"></div>
+				<div class="square rounded-circle"></div>
+			</div>
+	    </div>
+	    <div class="w-100"></div>
+	    <div class="col-xl">
+	      <p><h2 id="message" class="display-1"></h2></p>
+	    </div>
+	    <div class="w-100"></div>
+	    <div class="col-xl">
+			<div id="rules" style="background-color: #232323;">
+				<h4 style="text-align: center;" >------Rules------</h4>
+				<ul>					
+					<li>This color guessing game is based on "The RGB color model", an additive color model in which <span style="color: red;">red</span>,<span style="color :green;"> green</span> and <span style="color: blue;">blue</span> light are added together in various ways to reproduce a broad spectrum of colors. The name of the model comes from the initials of the three additive primary colors, <span style="color: red;">red</span>, <span style="color :green;"> green</span> and <span style="color: blue;">blue</span>. </li>
+					<li>You are given some quantities of the primary colors (<span style="color: red;">red</span>, <span style="color :green;"> green</span>, <span style="color: blue;">blue</span>) and you have to guess which color is made when these quantities are mixed. </li>
+					<li>The quantity of the primary colors (<span style="color: red;">red</span>, <span style="color :green;"> green</span>, <span style="color: blue;">blue</span>) are diplayed on the top in the format <span class="rounded-pill" style="font-size: 10px; background-color: rgb(164, 166, 171); border: 2px solid white; padding: 5px 5px; font-family: 'Poppins', sans-serif;">rgb(  ,  ,  )</span>  </li>
+					<li>The maximum quantity of a primary color is <span style="color: yellow; font-size: 20px; font-family: 'Italianno', cursive;">(255)</span> and the minimum quantity of a primary color is <span style=" color: yellow; font-size: 20px; font-family: 'Italianno', cursive;">(0)</span>.</li>
+					<li>If you guess an incorrect color the circle fades away whereas if you guess the correct color, all the existing 9 circles reappear!</li>
+					<li>If you are interested to know more about RGB color model, </li>
+					 <a href="https://en.wikipedia.org/wiki/RGB_color_model">Click here!</a>
+
+			    </ul>
+			</div>   
+	    </div>
+	  </div>
+	</div>
+
+	
+
+	
+
+	
+	
+	
+	<!-- Javascript -->
+
+	<script type="text/javascript">
+		var flag=0;
+		var e= document.querySelector("#easy");
+		var m= document.querySelector("#medium");
+		var d= document.querySelector("#difficult");
+
+		
+
+
+		var colors = generateRandomColors(9);
+		var h2= document.querySelector("h2");
+		var btn= document.querySelector("#reset");
+		var squares = document.querySelectorAll(".square");
+
+
+
+		var picked= pickRandomColor();
+		if(picked==undefined){
+			picked=colors[0];
+		}
+
+		var colordisplayed = document.querySelector("#display");
+		colordisplayed.textContent = picked;
+
+		// mode selection
+
+		e.addEventListener("click",function(){
+			colors = generateRandomColors(3);
+			picked= pickRandomColor();
+			if(picked==undefined)
+				picked=colors[0];
+			document.querySelector("#display").textContent = picked;
+			document.querySelector("#message").textContent = " ";
+			for(var i=0; i<squares.length; i++)
+			{
+				if(colors[i])
+					squares[i].style.backgroundColor = colors[i];
+				else
+					squares[i].style.display = "none";
+			}
+
+		});
+		m.addEventListener("click",function(){
+			colors = generateRandomColors(6);
+			picked= pickRandomColor();
+			if(picked==undefined)
+				picked=colors[0];
+			document.querySelector("#display").textContent = picked;
+			document.querySelector("#message").textContent = " ";
+			for(var i=0; i<squares.length; i++)
+			{
+				squares[i].style.display = "block";
+				if(colors[i])
+					squares[i].style.backgroundColor = colors[i];
+				else
+					squares[i].style.display = "none";
+			}
+		});
+		d.addEventListener("click",function(){
+			colors = generateRandomColors(9);
+			picked= pickRandomColor();
+			if(picked==undefined)
+				picked=colors[0];
+			document.querySelector("#display").textContent = picked;
+			document.querySelector("#message").textContent = " ";
+			for(var i=0; i<squares.length; i++)
+			{
+				squares[i].style.display = "block";
+				if(colors[i])
+					squares[i].style.backgroundColor = colors[i];
+				else
+					squares[i].style.display = "none";
+			}
+		});
+
+		// logic
+		
+		for(var i=0; i<squares.length; i++)
+			{
+				document.querySelector("#message").textContent = " ";
+				squares[i].style.backgroundColor = colors[i];
+				squares[i].addEventListener("click",function(){
+					var clicked = this.style.backgroundColor;
+					if(clicked===picked)
+					{
+						for(var j=0; j<squares.length; j++)
+							squares[j].style.backgroundColor= picked;
+						document.querySelector("#message").textContent = "CORRECT!!!!!";
+						document.querySelector("#reset").textContent = "Play Again";
+						
+					}
+					else
+					{
+						this.style.backgroundColor= "black";
+						document.querySelector("#message").textContent = "INCORRECT!";
+					}
+		
+				});
+			}
+
+		btn.addEventListener("click",function(){
+			document.querySelector("#message").textContent = " ";
+			colors = generateRandomColors(9);
+			picked= pickRandomColor();
+			if(picked==undefined)
+				picked=colors[0];
+			for(var i=0; i<squares.length; i++)
+				squares[i].style.backgroundColor = colors[i];
+			colordisplayed = document.querySelector("#display");
+			colordisplayed.textContent = picked;
+		});
+
+	    function pickRandomColor()
+	    {
+	    	var random = Math.floor(Math.random() * colors.length + 1);
+	    	return colors[random];
+	    }
+
+	    function generateRandomColors(num)
+    	{
+    		var a= [];
+    		for(var i=0; i<num; i++)
+    		{
+    			var b= [];
+    			for(var j = 0; j < 3; j++)
+    				b.push(Math.floor(Math.random() * 256));
+    			a[i]='rgb('+ b.join(', ') +')';    			
+    		}
+    		return a;
+    	}
+
+	</script>
+	
+
+
+</body>
+</html>
